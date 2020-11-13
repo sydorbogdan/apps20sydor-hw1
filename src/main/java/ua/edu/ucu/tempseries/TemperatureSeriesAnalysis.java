@@ -9,6 +9,7 @@ import java.util.InputMismatchException;
 public class TemperatureSeriesAnalysis {
 
     private DynDoubleArray temperatureSeries;
+    private int minTemperature = -273;
 
     public TemperatureSeriesAnalysis() {
         temperatureSeries = new DynDoubleArray();
@@ -23,7 +24,7 @@ public class TemperatureSeriesAnalysis {
 
     private boolean checkInpArr(double[] inpArr) {
         for (int i = 0; i < inpArr.length; i++) {
-            if (inpArr[i] < -273) {
+            if (inpArr[i] < minTemperature) {
                 return false;
             }
         }
