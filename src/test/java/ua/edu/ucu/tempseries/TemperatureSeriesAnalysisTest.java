@@ -8,7 +8,7 @@ import org.junit.Ignore;
 
 public class TemperatureSeriesAnalysisTest {
 
-    @Ignore
+//    @Ignore
     @Test
     public void testAverageWithOneElementArray() {
         double[] temperatureSeries = {-1.0};
@@ -73,7 +73,8 @@ public class TemperatureSeriesAnalysisTest {
 
         // average
         seriesAnalysis.average();
-       // deviation
+
+        // deviation
        seriesAnalysis.deviation();
 
         // min
