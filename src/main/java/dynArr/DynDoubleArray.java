@@ -13,18 +13,18 @@ public class DynDoubleArray {
         size = -1;
     }
 
-    public DynDoubleArray(double[] inp_data) {
-        data = inp_data;
-        capacity = inp_data.length;
-        size = inp_data.length - 1;
+    public DynDoubleArray(double[] inpData) {
+        data = inpData;
+        capacity = inpData.length;
+        size = inpData.length - 1;
     }
 
-    public void add(double inp_elem) {
+    public void add(double inpElem) {
         if (capacity == size + 1) {
             data = Arrays.copyOf(data, 2 * capacity);
             capacity *= 2;
         }
-        data[size + 1] = inp_elem;
+        data[size + 1] = inpElem;
         size += 1;
     }
 

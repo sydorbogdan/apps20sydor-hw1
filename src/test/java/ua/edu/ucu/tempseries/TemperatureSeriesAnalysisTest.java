@@ -186,8 +186,14 @@ public class TemperatureSeriesAnalysisTest {
     }
 
     @Test(expected = IndexOutOfBoundsException.class)
-    public void testGetWithEmptyArray() {
+    public void testGetPosWithEmptyArray() {
         DynDoubleArray testArr = new DynDoubleArray();
         testArr.get(100);
+    }
+
+    @Test(expected = IndexOutOfBoundsException.class)
+    public void testGetNegWithEmptyArray() {
+        DynDoubleArray testArr = new DynDoubleArray();
+        testArr.get(-100);
     }
 }
