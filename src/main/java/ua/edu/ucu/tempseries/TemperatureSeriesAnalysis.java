@@ -32,13 +32,10 @@ public class TemperatureSeriesAnalysis {
         if (temperatureSeries.len() == 0) {
             throw new IllegalArgumentException();
         }
-        if (temperatureSeries.len() == 1) {
-            return 0;
-        }
         double mean = average();
         double sum = 0;
         for (int i = 0; i < temperatureSeries.len(); i++) {
-            sum = sum + Math.pow(temperatureSeries.get(i) - mean, 2) / (temperatureSeries.len() - 1);
+            sum = sum + Math.pow(temperatureSeries.get(i) - mean, 2) / (temperatureSeries.len());
         }
         return Math.sqrt(sum);
     }
