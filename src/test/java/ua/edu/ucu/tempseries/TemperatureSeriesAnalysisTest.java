@@ -64,67 +64,64 @@ public class TemperatureSeriesAnalysisTest {
             assertEquals(correct_updated_arr[i], updated_arr[i], 0.00001);
         }
 
+        TempSummaryStatistics tSummaryStatistics = seriesAnalysis.summaryStatistics();
+
     }
 
 //    @Ignore
     @Test(expected = IllegalArgumentException.class)
     public void testAverageWithEmptyArray() {
         TemperatureSeriesAnalysis seriesAnalysis = new TemperatureSeriesAnalysis();
-
-        // average
         seriesAnalysis.average();
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void testDeviationWithEmptyArray() {
         TemperatureSeriesAnalysis seriesAnalysis = new TemperatureSeriesAnalysis();
-        // deviation
         seriesAnalysis.deviation();
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void testMinWithEmptyArray() {
         TemperatureSeriesAnalysis seriesAnalysis = new TemperatureSeriesAnalysis();
-        // deviation
         seriesAnalysis.min();
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void testMaxWithEmptyArray() {
         TemperatureSeriesAnalysis seriesAnalysis = new TemperatureSeriesAnalysis();
-        // deviation
         seriesAnalysis.max();
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void testFindTempClosestToZeroWithEmptyArray() {
         TemperatureSeriesAnalysis seriesAnalysis = new TemperatureSeriesAnalysis();
-        // deviation
         seriesAnalysis.findTempClosestToZero();
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void testFindTempClosestToValueWithEmptyArray() {
         TemperatureSeriesAnalysis seriesAnalysis = new TemperatureSeriesAnalysis();
-        // deviation
         seriesAnalysis.findTempClosestToValue(100);
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void testfindTempsLessThenWithEmptyArray() {
         TemperatureSeriesAnalysis seriesAnalysis = new TemperatureSeriesAnalysis();
-        // deviation
         seriesAnalysis.findTempsLessThen(100);
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void testFindTempsGreaterThenWithEmptyArray() {
         TemperatureSeriesAnalysis seriesAnalysis = new TemperatureSeriesAnalysis();
-        // deviation
         seriesAnalysis.findTempsGreaterThen(100);
     }
 
-
+    @Test(expected = IllegalArgumentException.class)
+    public void testSummaryStatisticsWithEmptyArray() {
+        TemperatureSeriesAnalysis seriesAnalysis = new TemperatureSeriesAnalysis();
+        seriesAnalysis.summaryStatistics();
+    }
 
 
 
