@@ -65,6 +65,10 @@ public class TemperatureSeriesAnalysisTest {
         }
 
         TempSummaryStatistics tSummaryStatistics = seriesAnalysis.summaryStatistics();
+        tSummaryStatistics.getAvgTemp();
+        tSummaryStatistics.getDevTemp();
+        tSummaryStatistics.getMaxTemp();
+        tSummaryStatistics.getMinTemp();
 
     }
 
