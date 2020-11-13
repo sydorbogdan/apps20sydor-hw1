@@ -8,8 +8,7 @@ public class TemperatureSeriesAnalysis {
 
     private DynDoubleArray temperatureSeries;
 
-    public TemperatureSeriesAnalysis()
-    {
+    public TemperatureSeriesAnalysis() {
         temperatureSeries = new DynDoubleArray();
     }
 
@@ -35,8 +34,9 @@ public class TemperatureSeriesAnalysis {
         double mean = average();
         double sum = 0;
         for (int i = 0; i < temperatureSeries.len(); i++) {
-            sum += (temperatureSeries.get(i) - mean) *
-                    (temperatureSeries.get(i) - mean) / (temperatureSeries.len());
+            sum += (temperatureSeries.get(i) - mean)
+                    * (temperatureSeries.get(i) - mean)
+                    / (temperatureSeries.len());
         }
         return Math.sqrt(sum);
     }
@@ -61,10 +61,11 @@ public class TemperatureSeriesAnalysis {
         }
         double closest = temperatureSeries.get(0);
         for (int i = 0; i < temperatureSeries.len(); i++) {
-            if (Math.abs(tempValue - temperatureSeries.get(i)) <
-                    Math.abs(tempValue - closest)) {
+            if (Math.abs(tempValue - temperatureSeries.get(i))
+                    < Math.abs(tempValue - closest)) {
                 closest = temperatureSeries.get(i);
-            } else if (Math.abs(temperatureSeries.get(i)) == Math.abs(closest)) {
+            } else if (Math.abs(temperatureSeries.get(i))
+                    == Math.abs(closest)) {
                 if ((tempValue - temperatureSeries.get(i)) < 0) {
                     closest = temperatureSeries.get(i);
                 }
@@ -107,14 +108,13 @@ public class TemperatureSeriesAnalysis {
     }
 
     public int addTemps(double[] temps) {
-        for (int i=0; i < temps.length; i++){
+        for (int i = 0; i < temps.length; i++) {
             temperatureSeries.add(temps[i]);
         }
         return temperatureSeries.len();
     }
 
-    public double[] getTemps()
-    {
+    public double[] getTemps() {
         return temperatureSeries.getData();
     }
 }
