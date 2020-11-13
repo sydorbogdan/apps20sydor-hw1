@@ -3,6 +3,8 @@ package ua.edu.ucu.tempseries;
 
 import dynarr.DynDoubleArray;
 
+import java.util.InputMismatchException;
+
 
 public class TemperatureSeriesAnalysis {
 
@@ -13,7 +15,19 @@ public class TemperatureSeriesAnalysis {
     }
 
     public TemperatureSeriesAnalysis(double[] tempSeries) {
+        if (!checkInpArr(tempSeries)) {
+            throw new InputMismatchException();
+        }
         temperatureSeries = new DynDoubleArray(tempSeries);
+    }
+
+    private boolean checkInpArr(double[] inpArr) {
+        for (int i = 0; i < inpArr.length; i++) {
+            if (inpArr[i] < -273) {
+                return false;
+            }
+        }
+        return true;
     }
 
     public double average() {
@@ -108,6 +122,9 @@ public class TemperatureSeriesAnalysis {
     }
 
     public int addTemps(double[] temps) {
+        if (!checkInpArr(temps)) {
+            throw new InputMismatchException();
+        }
         for (int i = 0; i < temps.length; i++) {
             temperatureSeries.add(temps[i]);
         }

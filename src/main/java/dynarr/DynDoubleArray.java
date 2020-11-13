@@ -1,6 +1,7 @@
 package dynarr;
 
 import java.util.Arrays;
+import java.util.InputMismatchException;
 
 public class DynDoubleArray {
     private int capacity;

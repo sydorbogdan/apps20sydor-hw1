@@ -5,6 +5,8 @@ import static org.junit.Assert.*;
 import dynarr.DynDoubleArray;
 import org.junit.Test;
 
+import java.util.InputMismatchException;
+
 public class TemperatureSeriesAnalysisTest {
 
 //    @Ignore
@@ -126,7 +128,16 @@ public class TemperatureSeriesAnalysisTest {
         seriesAnalysis.summaryStatistics();
     }
 
+    @Test(expected = InputMismatchException.class)
+    public void testAddTempsWithEmptyArray() {
+        TemperatureSeriesAnalysis seriesAnalysis = new TemperatureSeriesAnalysis();
+        seriesAnalysis.addTemps(new double[]{-300});
+    }
 
+    @Test(expected = InputMismatchException.class)
+    public void testCreateInvalidInstWithEmptyArray() {
+        TemperatureSeriesAnalysis seriesAnalysis = new TemperatureSeriesAnalysis(new double[]{-300});
+    }
 
     @Test
     public void testMoreThanOne() {
