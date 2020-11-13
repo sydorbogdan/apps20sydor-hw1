@@ -42,14 +42,6 @@ public class DynDoubleArray {
 
     }
 
-    public double sum()
-    {
-        double sum = 0;
-        for (int i=0; i < len(); i++){
-            sum += data[i];
-        }
-        return sum;
-    }
 
     public double min()
     {
