@@ -130,7 +130,7 @@ public class TemperatureSeriesAnalysisTest {
 
 
     @Test
-    public void testAverage() {
+    public void testMoreThanOne() {
         double[] temperatureSeries = {3.0, -5.0, 1.0, 5.0};
         TemperatureSeriesAnalysis seriesAnalysis = new TemperatureSeriesAnalysis(temperatureSeries);
 
@@ -185,5 +185,9 @@ public class TemperatureSeriesAnalysisTest {
         }
     }
 
-
+    @Test(expected = IndexOutOfBoundsException.class)
+    public void testGetWithEmptyArray() {
+        DynDoubleArray testArr = new DynDoubleArray();
+        testArr.get(100);
+    }
 }
