@@ -1,4 +1,4 @@
-package dynArr;
+package dynarr;
 
 import java.util.Arrays;
 

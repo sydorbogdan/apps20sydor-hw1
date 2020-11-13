@@ -1,7 +1,7 @@
 package ua.edu.ucu.tempseries;
 
 
-import dynArr.DynDoubleArray;
+import dynarr.DynDoubleArray;
 
 
 public class TemperatureSeriesAnalysis {
