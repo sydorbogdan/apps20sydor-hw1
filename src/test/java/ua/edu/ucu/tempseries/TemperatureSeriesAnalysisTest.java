@@ -9,7 +9,7 @@ import java.util.InputMismatchException;
 
 public class TemperatureSeriesAnalysisTest {
 
-//    @Ignore
+    //    @Ignore
     @Test
     public void testAverageWithOneElementArray() {
         double[] temperatureSeries = {-1.0};
@@ -41,27 +41,27 @@ public class TemperatureSeriesAnalysisTest {
 
         //  findTempsLessThen
         double[] smaller_arr = seriesAnalysis.findTempsLessThen(100);
-        double[] correct_smaller_arr = new double[] {-1.0};
+        double[] correct_smaller_arr = new double[]{-1.0};
         assertEquals(correct_smaller_arr.length, smaller_arr.length, 0.00001);
-        for (int i=0; i < correct_smaller_arr.length; i++) {
+        for (int i = 0; i < correct_smaller_arr.length; i++) {
             assertEquals(correct_smaller_arr[i], smaller_arr[i], 0.00001);
         }
 
         // findTempsGreaterThen
         double[] larger_arr = seriesAnalysis.findTempsGreaterThen(100);
-        double[] correct_greater_arr = new double[] {};
+        double[] correct_greater_arr = new double[]{};
         assertEquals(correct_greater_arr.length, larger_arr.length, 0.00001);
-        for (int i=0; i < correct_greater_arr.length; i++) {
+        for (int i = 0; i < correct_greater_arr.length; i++) {
             assertEquals(correct_greater_arr[i], larger_arr[i], 0.00001);
         }
 
         //  addTemps
         int arr_len = seriesAnalysis.addTemps(new double[]{1, 34, 646, -100});
         double[] updated_arr = seriesAnalysis.getTemps();
-        double[] correct_updated_arr = new double[] {-1, 1, 34, 646, -100};
+        double[] correct_updated_arr = new double[]{-1, 1, 34, 646, -100};
         int correct_len = 5;
         assertEquals(arr_len, correct_len, 0.00001);
-        for (int i=0; i < updated_arr.length; i++) {
+        for (int i = 0; i < updated_arr.length; i++) {
             assertEquals(correct_updated_arr[i], updated_arr[i], 0.00001);
         }
 
@@ -73,7 +73,7 @@ public class TemperatureSeriesAnalysisTest {
 
     }
 
-//    @Ignore
+    //    @Ignore
     @Test(expected = IllegalArgumentException.class)
     public void testAverageWithEmptyArray() {
         TemperatureSeriesAnalysis seriesAnalysis = new TemperatureSeriesAnalysis();
@@ -170,27 +170,37 @@ public class TemperatureSeriesAnalysisTest {
 
         //  findTempsLessThen
         double[] smaller_arr = seriesAnalysis.findTempsLessThen(100);
-        double[] correct_smaller_arr = new double[] {3.0, -5.0, 1.0, 5.0};
+        double[] correct_smaller_arr = new double[]{3.0, -5.0, 1.0, 5.0};
         assertEquals(correct_smaller_arr.length, smaller_arr.length, 0.00001);
-        for (int i=0; i < correct_smaller_arr.length; i++) {
+        for (int i = 0; i < correct_smaller_arr.length; i++) {
             assertEquals(correct_smaller_arr[i], smaller_arr[i], 0.00001);
         }
 
         // findTempsGreaterThen
         double[] larger_arr = seriesAnalysis.findTempsGreaterThen(100);
-        double[] correct_greater_arr = new double[] {};
+        double[] correct_greater_arr = new double[]{};
         assertEquals(correct_greater_arr.length, larger_arr.length, 0.00001);
-        for (int i=0; i < correct_greater_arr.length; i++) {
+        for (int i = 0; i < correct_greater_arr.length; i++) {
             assertEquals(correct_greater_arr[i], larger_arr[i], 0.00001);
         }
 
         //  addTemps
         int arr_len = seriesAnalysis.addTemps(new double[]{1});
         double[] updated_arr = seriesAnalysis.getTemps();
-        double[] correct_updated_arr = new double[] {3.0, -5.0, 1.0, 5.0, 1};
+        double[] correct_updated_arr = new double[]{3.0, -5.0, 1.0, 5.0, 1};
         int correct_len = 5;
         assertEquals(arr_len, correct_len, 0.00001);
-        for (int i=0; i < updated_arr.length; i++) {
+        for (int i = 0; i < updated_arr.length; i++) {
+            assertEquals(correct_updated_arr[i], updated_arr[i], 0.00001);
+        }
+
+        //  addTemps
+        arr_len = seriesAnalysis.addTemps(1, 2);
+        updated_arr = seriesAnalysis.getTemps();
+        correct_updated_arr = new double[]{3.0, -5.0, 1.0, 5.0, 1, 1, 2};
+        correct_len = 7;
+        assertEquals(correct_len, arr_len, 0.00001);
+        for (int i = 0; i < updated_arr.length; i++) {
             assertEquals(correct_updated_arr[i], updated_arr[i], 0.00001);
         }
     }

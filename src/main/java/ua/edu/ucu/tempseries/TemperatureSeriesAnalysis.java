@@ -123,7 +123,7 @@ public class TemperatureSeriesAnalysis {
                 this.min(), this.max());
     }
 
-    public int addTemps(double[] temps) {
+    public int addTemps(double... temps) {
         if (!checkInpArr(temps)) {
             throw new InputMismatchException();
         }
