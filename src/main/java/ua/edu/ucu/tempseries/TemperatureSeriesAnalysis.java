@@ -9,7 +9,7 @@ import java.util.InputMismatchException;
 public class TemperatureSeriesAnalysis {
 
     private DynDoubleArray temperatureSeries;
-    private int minTemperature = -273;
+    private static final int minTemperature = -273;
 
     public TemperatureSeriesAnalysis() {
         temperatureSeries = new DynDoubleArray();
