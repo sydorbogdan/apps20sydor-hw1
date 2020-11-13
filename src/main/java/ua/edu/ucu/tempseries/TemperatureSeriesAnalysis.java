@@ -13,8 +13,8 @@ public class TemperatureSeriesAnalysis {
         temperatureSeries = new DynDoubleArray();
     }
 
-    public TemperatureSeriesAnalysis(double[] TempSeries) {
-        temperatureSeries = new DynDoubleArray(TempSeries);
+    public TemperatureSeriesAnalysis(double[] tempSeries) {
+        temperatureSeries = new DynDoubleArray(tempSeries);
     }
 
     public double average() {
@@ -35,7 +35,8 @@ public class TemperatureSeriesAnalysis {
         double mean = average();
         double sum = 0;
         for (int i = 0; i < temperatureSeries.len(); i++) {
-            sum = sum + Math.pow(temperatureSeries.get(i) - mean, 2) / (temperatureSeries.len());
+            sum += (temperatureSeries.get(i) - mean) *
+                    (temperatureSeries.get(i) - mean) / (temperatureSeries.len());
         }
         return Math.sqrt(sum);
     }
@@ -60,7 +61,8 @@ public class TemperatureSeriesAnalysis {
         }
         double closest = temperatureSeries.get(0);
         for (int i = 0; i < temperatureSeries.len(); i++) {
-            if (Math.abs(tempValue - temperatureSeries.get(i)) < Math.abs(tempValue - closest)) {
+            if (Math.abs(tempValue - temperatureSeries.get(i)) <
+                    Math.abs(tempValue - closest)) {
                 closest = temperatureSeries.get(i);
             } else if (Math.abs(temperatureSeries.get(i)) == Math.abs(closest)) {
                 if ((tempValue - temperatureSeries.get(i)) < 0) {
@@ -76,17 +78,16 @@ public class TemperatureSeriesAnalysis {
     }
 
     private double[] findTempsThen(double tempValue, int sign) {
-        double arr_length = temperatureSeries.len();
-        if (arr_length == 0) {
+        if (temperatureSeries.len() == 0) {
             throw new IllegalArgumentException();
         }
-        DynDoubleArray rez_arr = new DynDoubleArray();
-        for (int i = 0; i < arr_length; i++) {
+        DynDoubleArray rezArr = new DynDoubleArray();
+        for (int i = 0; i < temperatureSeries.len(); i++) {
             if (sign * temperatureSeries.get(i) > sign * tempValue) {
-                rez_arr.add(temperatureSeries.get(i));
+                rezArr.add(temperatureSeries.get(i));
             }
         }
-        return rez_arr.getData();
+        return rezArr.getData();
     }
 
     public double[] findTempsLessThen(double tempValue) {
@@ -101,7 +102,8 @@ public class TemperatureSeriesAnalysis {
         if (temperatureSeries.len() == 0) {
             throw new IllegalArgumentException();
         }
-        return new TempSummaryStatistics(this.average(), this.deviation(), this.min(), this.max());
+        return new TempSummaryStatistics(this.average(), this.deviation(),
+                this.min(), this.max());
     }
 
     public int addTemps(double[] temps) {
